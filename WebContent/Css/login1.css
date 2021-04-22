@@ -1,0 +1,52 @@
+@charset "UTF-8";
+body{
+	background:url("https://i.pinimg.com/originals/98/1f/e9/981fe9c55c4a624d0ab13b2233b273d6.jpg");
+   /* background: -webkit-linear-gradient(left, gray,white);*/
+}
+* {
+	
+	text-decoration: none;
+}
+.login-block{
+float:left;
+width:100%;
+padding : 50px 0;
+}
+.banner-sec{ no-repeat left bottom; background-size:cover; min-height:500px; border-radius: 0 10px 10px 0; padding:0;}
+.container{background:#fff; border-radius: 10px; }
+.carousel-inner{border-radius:0 10px 10px 0;}
+.carousel-caption{text-align:left; left:5%;}
+.login-sec{padding: 50px 30px; position:relative;}
+.login-sec .copy-text{position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
+.login-sec .copy-text i{color:#FEB58A;}
+.login-sec .copy-text a{color:#E36262;}
+.login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #DE6262;}
+.login-sec h2:after{content:" "; width:100px; height:5px; background:black; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+.btn-login{background: #503396;
+ color:#fff; font-weight:600;}
+.banner-text{width:70%; position:absolute; bottom:40px; padding-left:20px;}
+.banner-text h2{color:#fff; font-weight:600;}
+.banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}
+.banner-text p{color:#fff;}
+
+
+.login-sec h2 {
+    margin-bottom: 30px;
+    font-weight: 800;
+    font-size: 30px;
+   font-family: 'ELAND_Choice_L';
+    color: black;
+}
+.text-uppercase{
+	font-family: 'ELAND_Choice_L';
+}
+.form-group>input{
+	font-family: 'ELAND_Choice_L';
+}
+
+.loginCheck{
+	color: red;
+	font-family: 'ELAND_Choice_L';
+	font-size: 13px;
+	padding-top: 30px;
+}

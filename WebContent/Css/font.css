@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+
+/*을유체1945*/
+@font-face {
+    font-family: 'Eulyoo1945-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/Eulyoo1945-SemiBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*이롭게 바탕체*/
+@import url('//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
+
+
+/*빙그레체*/
+@font-face {
+    font-family: 'Binggrae-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*제주 명조 */
+
+@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+
+.jejumyeongjo * { 
+ font-family: 'Jeju Myeongjo', serif;
+}
+
+/*경기천년*/
+@font-face {
+    font-family: 'GyeonggiBatang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/*이랜드 초이스체*/
+@font-face {
+    font-family: 'ELAND_Choice_L';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/ELAND_Choice_L.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    
+}
+
+/*나눔스퀘어*/
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+.nanumsquare {
+    font-family: 'NanumSquare', sans-serif !important;
+}
+
+/*한불정부표준*/
+@font-face {
+    font-family: 'KoreanFrenchTypewriter';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/KoreanFrenchTypewriter.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/*나눔 명조*/
+@import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+
+.nanummyeongjo * {
+ font-family: 'Nanum Myeongjo', serif;
+}
+
+/*부산*/
+
+@font-face {
+    font-family: 'NEXON Lv2 Gothic Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

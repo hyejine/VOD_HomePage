@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+* {
+	
+	text-decoration: none;
+}
+body{
+	background:url("https://i.pinimg.com/originals/98/1f/e9/981fe9c55c4a624d0ab13b2233b273d6.jpg");
+   /* background: -webkit-linear-gradient(left, gray,white);*/
+}
+
+        .h7 {
+            font-size: 0.8rem;
+        }
+
+        .gedf-wrapper {
+            margin-top: 0.97rem;
+        }
+
+        @media (min-width: 992px) {
+            .gedf-main {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+            .gedf-card {
+                margin-bottom: 2.77rem;
+            }
+        }
+
+        /**Reset Bootstrap*/
+        .dropdown-toggle::after {
+            content: none;
+            display: none;
+        }
+        
+ .bootss{
+ /*background: black;*/
+ width: 1100px;
+ margin: auto;
+padding-top: 60px;
+padding-left: 100px;
+ }       
+ 
+.bgwhite {
+    background-color: none;
+}
+.bgwhite>a{
+	color: white;
+	font-size: 20px;
+	font-family: 'ELAND_Choice_L';
+	text-decoration: none;
+}
+.bgwhite:hover>a{
+	color: white;
+	font-size: 20px;
+	font-family: 'ELAND_Choice_L';
+	text-decoration: none;
+}
+.h51{
+	
+	font-family: 'ELAND_Choice_L';
+	font-weight: bold;
+	font-size: 17px;
+}
+.h7{
+	font-family: 'ELAND_Choice_L';
+}
+.h61{
+	font-family: 'ELAND_Choice_L';
+}
+.nav-link {
+	font-family: 'ELAND_Choice_L';
+}
+.form-control{
+	font-family: 'ELAND_Choice_L';
+}      
+.btn{
+	font-family: 'ELAND_Choice_L';
+	color: white;
+}
+.btn:hover{
+	font-family: 'ELAND_Choice_L';
+	color: white;
+}
+.btn-primary1{
+	background: #503396;
+}
+
+.btn-primary1:hover{
+	background: #432b7d;
+}
+
+.h71{
+	font-family: 'ELAND_Choice_L';
+	font-size: 14px;
+} 
+.card-text{
+	font-family: 'ELAND_Choice_L';
+}
+
+.card-link{
+	color: #503396;
+}
+
+.card-link:hover{
+	color: #432b7d;
+}
+
+
+.votts{
+	margin-top: -160px;
+}
+.card-footer{
+}
+.card-footer>button{
+	color: white;
+	background: #503396;
+	border: none;
+	border-radius: 3px;
+	  font-family: 'ELAND_Choice_L';
+	  font-size: 13px;
+	  width: 60px;
+	  height: 30px;
+}
+
+
+
+

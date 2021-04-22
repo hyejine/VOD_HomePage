@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tp">
+	<!-- parameterType => 사용할 값 자바빈 패키지명 == sql -->
+
+
+<!-- resultType => 결과로 받을 빈의 패키지명 -->
+
+
+<!--회원가입 -->
+
+
+<insert parameterType="com.tp.join.Member" id="regjoin"> 
+insert into member_db 
+values (#{m_id}, #{m_pw}, #{m_name}, #{m_phone}, #{m_mail}) </insert>
+
+<!-- 로그인 -->
+
+
+<select parameterType="com.tp.join.Member" id="login" resultType="com.tp.join.Member"> select * from member_db where m_id = #{m_id} and m_pw=#{m_pw} </select>
+
+<select parameterType="com.tp.join.Member" id="login1" resultType="com.tp.join.Member"> select * from member_db where m_id = #{m_id} and m_pw!=#{m_pw} </select>
+
+<!-- 회원정보 조회 -->
+
+
+<select parameterType="com.tp.join.Member" id="selectInfo" resultType="com.tp.join.Member"> select * from member_db where m_id =#{m_id} </select>
+
+<!-- 회원정보 수정 -->
+
+
+
+<update parameterType="com.tp.memberUpdate.MemberUdate" id="updateMember">
+update member_db set m_name =#{r_name}, m_pw =#{r_pw}, m_phone =#{r_number}, m_mail =#{r_email} where m_id =#{r_id2} 
+<!-- 세션에서 받은값의 아이디 일때 다시 세팅 해준다. -->
+
+
+</update>
+
+<!-- 영화 등록 -->
+<insert parameterType="com.tp.jsonTest.Movie" id="regMovie"> 
+insert into movie_db values (movie_db_seq.nextval, #{mo_name}, #{mo_release}, 
+#{mo_director},#{mo_actor},#{mo_rating}, #{mo_img},#{mo_price},#{mo_time}) 
+</insert>
+
+
+
+<!-- 등록된 모든 영화보기 -->
+<select id="getAllMovie" resultType="com.tp.jsonTest.Movie"> 
+select * from movie_db 
+</select>
+
+<!-- 영화 클릭시 극장 정보 뜨기 -->
+
+
+<select parameterType="com.tp.movie.Movie" id="TheaterList" resultType="com.tp.ticket.TicketInfoDTO"> select * from Theater_db, movie_db where mo_name = '%'||#{mo_name}||'%' </select>
+
+<!-- 극장 정보 -->
+
+
+<select id="getAllTheater" resultType="com.tp.manager.Theater"> select * from theater_db </select>
+
+<!-- 극장 등록 -->
+
+
+<insert parameterType="com.tp.manager.Theater" id="regTheater"> insert into theater_db values(theater_db_seq.nextval, #{th_place}, #{th_room}, #{th_seat}) </insert>
+
+<!-- 예매 정보 등록 -->
+
+
+<insert parameterType="com.tp.ticket.Ticket" id="regTicket"> insert into ticket values(ticket_seq.nextval, #{t_theater}, #{t_movie}, #{t_uid}, #{t_seat}, #{t_price}, #{t_start}, #{t_end}) </insert>
+
+<!-- 예매 정보 확인 -->
+
+
+
+<select parameterType="com.tp.ticket.JoinGetAllTicketByIdDTO" id="getAllTicketById" resultType="com.tp.ticket.TicketInfoDTO">
+
+<!-- bean을 따로 만들어서 파라미터 타입을 그 것으로 설정하고 값을 받는다 #{m_id}-멤버 #{m_no}-무비 #{th_no}-극장-->
+
+select * from ticket, member, movie_db, theater_db where t_uid = #{m_id} and t_movie = #{mo_no} and t_theater = #{th_no} 
+</select>
+
+<!-- 티켓 조회(영화, 영화관) -->
+
+
+
+<select parameterType="com.tp.ticket.JoinGetAllTicketDTO" id="getAllTicket" resultType="com.tp.ticket.TicketInfoDTO">
+
+<!-- bean을 따로 만들어서 파라미터 타입을 그 것으로 설정하고 값을 받는다 #{m_id}-멤버 #{m_no}-무비 #{th_no}-극장 (다중정렬 - 극장, 영화)-->
+
+select * from ticket, member, movie, theater where t_movie = #{m_no} and t_theater = #{th_no} order by t_theater, m_no 
+</select>
+
+<!-- 티켓 조회(티켓번호로)해서 m_no와 th_no뽑아내기 -->
+
+
+<select id="getAlllTicketByNo">select * from ticket, member, </select>
+
+<!-- 티켓 조회(사진을 눌렀을 때) -->
+
+
+<select parameterType="com.tp.ticket.Ticket" id="getTheTicketInfo" resultType="com.tp.ticket.TicketInfoDTO">select *from ticket, member, movie, theaterwhere t_no = #{t_no}group by t_no </select>
+
+<!-- -->
+
+
+<!-- 장바구니 데이터 등록 -->
+
+
+<insert parameterType="com.tp.cart.Cart" id="regCart">insert into cart values(cart_seq.nextval, #{c_u_id}, sysdate, #{c_p_no}, #{c_p_quantity}, #{c_price}, #{c_img}, #{c_type}) </insert>
+
+<!-- 장바구니 데이터 삭제 -->
+
+
+<insert parameterType="com.tp.cart.Cart" id="deleteCart">delete cart where c_no = #{c_no} </insert>
+
+<!-- 장바구니 조회(개인)-->
+
+
+
+<select parameterType="com.tp.cart.Cart" id="getAllCart" resultType="com.tp.cart.Cart">
+
+<!-- DTO(ORM이므로 - object relation) -->
+
+select * from cart where c_u_id = #{c_u_id} 
+</select>
+
+<!-- 장바구니 특정 상품만 조회(구매량 합쳐서 다시 업로드 용) -->
+
+
+<select parameterType="com.tp.cart.Cart" id="getAllCartByp_no" resultType="com.tp.cart.Cart">select * from cart where c_p_no=#{c_p_no} </select>
+
+<!-- 장바구니에 특정 상품 수량 재업로드 -->
+
+
+<update parameterType="com.tp.product.Product" id="updateExistedProduct's_quantity">update cart set c_p_quantity=#{p_quantity} where c_p_no = #{p_no} </update>
+
+<!-- 장바구니 조회(체크박스)-->
+
+
+
+<select parameterType="com.tp.cart.Cart" id="getAllCheckedCart" resultType="com.tp.cart.Cart">
+
+<!-- DTO(ORM이므로 - object relation) -->
+
+select * from cart where c_no = #{c_no} 
+</select>
+
+<!-- 카트 수량 수정 -->
+
+
+<update parameterType="com.tp.cart.Cart" id="updateCartqu">update cart set c_p_quantity=#{c_p_quantity} where c_no = #{c_no} </update>
+
+<!-- 구매내역 데이터 등록 -->
+
+
+<insert parameterType="com.tp.cart.Purchase" id="regPurchase">insert into purchase values(purchase_seq.nextval, #{pu_c_no}, #{pu_u_id}, sysdate, #{pu_p_no}, #{pu_p_quantity}, #{pu_price}, #{pu_img}, #{pu_type}) </insert>
+
+<!-- 바로 구매 -->
+
+
+<insert parameterType="com.tp.cart.Purchase" id="regPurchaseDirectly">insert into purchase values(purchase_seq.nextval, null, #{pu_u_id}, sysdate, #{pu_p_no}, #{pu_p_quantity}, #{pu_price}, #{pu_img}, #{pu_type} ) </insert>
+
+<!-- 구매내역 조회 -->
+
+
+<select parameterType="com.tp.join.Member" id="getAllPurchaseHistory" resultType="com.tp.cart.Purchase">select * from purchase where pu_u_id = #{m_id} order by pu_date </select>
+
+<!-- 상품 데이터 등록 -->
+
+
+<insert parameterType="com.tp.product.Product" id="regProduct">insert into product_db values(product_seq.nextval, #{p_name},#{p_info}, #{p_price}, #{p_quantity}, #{p_img}) </insert>
+
+<!-- 전체 상품 데이터 조회-->
+
+
+<select id="getAllProduct" resultType="com.tp.product.Product">select * from product_db </select>
+
+<!-- 상품 데이터 조회(사진 눌러서 조회)-->
+
+
+<select parameterType="com.tp.product.Product" id="getTheProductInfo" resultType="com.tp.product.Product">
+select * from product_db where p_no = #{p_no} </select>
+
+<!-- 해당 상품 재고 조회 -->
+
+
+<select parameterType="com.tp.product.Product" id="getTheProductQuantity" resultType="com.tp.product.Product">select p_quantity from product_db where p_no=#{p_no} </select>
+
+<!-- 해당 상품 전체 조회 -->
+
+
+<select parameterType="com.tp.product.Product" id="getTheProduct1" resultType="com.tp.product.Product">select * from product_db where p_no=#{p_no} </select>
+
+<!-- 상품 재고 업데이트 -->
+
+
+<update id="updateTheProductQuantity">update product_db set p_quantity=#{p_quantity} where p_no=#{p_no} </update>
+
+<!-- 전체 후기 출력 -->
+
+
+<select id="getAllReview" resultType="com.tp.review.ReviewInfo">select * from review_db </select>
+
+<!-- 영화번호로 후기 출력 -->
+
+
+<select parameterType="com.tp.review.Review" id="getTheMovieByNo1" resultType="com.tp.review.Review">select * from review_db where r_no = #{r_no} </select>
+
+<!-- 특정 영화의 후기 출력 -->
+
+
+<select parameterType="com.tp.review.Review" id="getReviewsByMo_no" resultType="com.tp.review.Review">select * from review_db where r_mo_no = #{r_mo_no} </select>
+
+<!-- 특정 영화의 후기 및 영화 정보 출력 -->
+
+
+<select parameterType="com.tp.review.Review" id="getReviewInfoByMo_no" resultType="com.tp.review.ReviewInfo">select * from review_db, movie_db, member_db where r_mo_no = #{r_mo_no} and mo_no=r_mo_no and mo_no=#{r_mo_no} and r_uid = m_id </select>
+
+<!-- 후기 등록 -->
+
+
+<insert parameterType="com.tp.review.Review" id="regReview"> insert into review_db values(review_db_seq.nextval,#{r_mo_no},#{r_uId},#{r_review},#{r_rating}) </insert>
+
+<!-- 후기 아이디, 이름, 영화이름 조회 -->
+
+
+<select parameterType="com.tp.review.ReviewInfo" id="tp.getReview2" resultType="com.tp.review.ReviewInfo"> 
+select *from member_db, movie_db where mo_no =#{mo_no} and m_id =#{m_id} </select>
+
+<!-- 영화정보에서 (info) 후기 등록 버튼을 통해 r_m_no전달 -->
+
+
+<!-- 내가 올린 영화 후기 -->
+
+
+<select parameterType="com.tp.review.ReviewInfo" id="getTheReviewById" resultType="com.tp.review.ReviewInfo"> 
+select * from review_db where r_uId = #{m_id} </select>
+
+<!-- 영화 번호 이용해서 어떤 영화인지 찾기 -->
+
+
+<select parameterType="com.tp.review.ReviewInfo" id="getMovieByR_mo_no" resultType="com.tp.review.ReviewInfo"> select * from review_db, movie_db where mo_no=#{r_mo_no} </select>
+
+<!-- 후기 정보를 통해 어떤 영화인지, 회원이 누구인지 -->
+
+
+<select parameterType="com.tp.review.ReviewInfo" id="getInfoByReview" resultType="com.tp.review.ReviewInfo"> 
+select * from review_db, movie_db, member_db 
+where mo_no = #{r_mo_no} and r_no = #{r_no} and m_id = #{r_uId} </select>
+
+<!-- 후기 삭제 -->
+
+
+<delete parameterType="com.tp.review.Review" id="deleteReview"> delete review_db where r_no = #{r_no} </delete>
+
+<!-- 후기 수정 -->
+
+
+<update parameterType="com.tp.review.Review" id="updateReview"> update review_db set r_review=#{r_review}, r_rating = #{r_rating} where r_no = #{r_no} </update>
+
+<!-- 평점 뽑아내기 -->
+
+
+<select parameterType="com.tp.review.Review" id="getRatingByNo" resultType="com.tp.review.Review"> select r_rating from review_db where r_mo_no = #{r_mo_no} </select>
+
+<!-- 평균낸 평점 update(movieDB)-->
+
+
+<update parameterType="com.tp.movie.Movie" id="updateMo_Rating"> update movie_db set mo_rating = #{mo_rating} where mo_no = #{mo_no} </update>
+
+<!-- 상영 영화 등록 -->
+
+
+<insert parameterType="com.tp.showingmovie.ShowingMovie" id="regShowingMovie">insert into showing_movie values(showing_movie_seq,#{sm_mo_no},#{sm_th_no},#{sm_t_start},#{sm_t_end}) </insert>
+
+<!-- 상영영화 전체 데이터(등록 가능여부 비교) -->
+
+
+<select id="getAllSM" resultType="com.tp.showingmovie.ShowingMovie">select * from showing_movie </select>
+
+<!-- 상영 영화 넘버로 데이터 조회(ticketReg에 쓸거 start,end time) -->
+
+
+<select parameterType="com.tp.showingmovie.ShowingMovie" id="getTheShowingMovie" resultType="com.tp.showingmovie.ShowingMovie">select * from showing_movie where sm_no=#{sm_no} </select>
+
+<!-- 상영 영화 넘버로 데이터 조회(티켓에 입력할 극장, 영화정보) -->
+
+
+<select parameterType="com.tp.showingmovie.ShowingMovieInfo" id="getTheShowingMovieInfo" resultType="com.tp.showingmovie.ShowingMovieInfo">select * from showing_movie,movie_db,theater_db where mo_no=#{mo_no} and th_no=#{th_no}, sm_no=#{sm_no} </select>
+
+<!-- 장바구니 페이지 출력 정보 조회 -->
+
+
+
+<select id="getInfoForCart_jsp" parameterType="com.tp.cart.Cart" resultType="com.tp.cart.Cart_Prouct">
+select * from product_db,cart where c_u_id= #{c_u_id} and c_p_no=p_no
+</select>
+
+
+
+<!-- select * from product_db,review_db where c_p_no= :1 , p_no= :2 -->
+
+
+<!-- 로그인 아이디 겹칩 방지 -->
+<select id="regjoinId" resultType="com.tp.join.Member" parameterType="com.tp.join.Member">
+select *from member_db where m_id = #{m_id}
+</select>
+
+<!-- dvd등록 -->
+<insert parameterType="com.tp.dvd.DVD" id="regDVD">insert into dvd values(dvd_seq.nextval,#{d_name},#{d_release},#{d_director},#{d_actor},#{d_img},#{d_price},#{d_runningTime}) </insert>
+
+<!-- 영화 검색 -->
+<select parameterType="com.tp.jsonTest.Movie" id="searchMovie" resultType="com.tp.jsonTest.Movie"> 
+select * from movie_db where mo_name like '%'||#{mo_name}||'%' or mo_director like '%'||#{mo_name}||'%' or mo_actor like '%'||#{mo_name}||'%'
+ </select>
+ 
+<!-- dvd상품 조회 -->
+<select id="getAllDVD" resultType="com.tp.dvd.DVD">select * from dvd </select>
+
+<!-- -->
+<!-- 영화 등록 -->
+
+<select parameterType="com.tp.dvd.DVD" id="getTheDVD" resultType="com.tp.dvd.DVD">select * from dvd where d_no=#{d_no} </select>
+
+
+<insert parameterType="com.tp.jsonTest.Movie" id="regMovie1"> 
+insert into movie_db values (movie_db_seq.nextval, #{mo_name}, #{mo_release}, 
+#{mo_director},null ,#{mo_rating}, #{mo_img},#{mo_price},#{mo_time}) 
+</insert>
+
+<insert parameterType="com.tp.dvd.DVD" id="regDVD1">insert into dvd values(dvd_seq.nextval,#{d_name},#{d_release},#{d_director},null,#{d_img},#{d_price},#{d_runningTime}) </insert>
+
+
+
+
+</mapper>

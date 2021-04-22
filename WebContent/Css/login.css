@@ -1,0 +1,219 @@
+@charset "UTF-8";
+
+* {
+	text-decoration: none;
+}
+
+.modal_wrap>h2 {
+	font-family: 'ELAND_Choice_L';
+}
+
+.modal_wrap {
+	position:fixed;
+	display: none;
+	width: 850px;
+	height: 484px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -425px;
+	margin-top: -242px;
+	background: #fff;
+	box-shadow: 2px 2px 6px 2px rgb(0 0 0/ 10%);
+	z-index: 2;
+}
+
+.modal_wrap>h3 {
+	height: 35px;
+	background: #503396;
+	color: #fff;
+	padding: 15px 20px 0 20px;
+	font-size: 1.0em;
+	line-height: 1.1;
+}
+
+.black_bg {
+	display: none;
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.modal_close {
+	width: 26px;
+	height: 26px;
+	position: absolute;
+	top: -30px;
+	right: 0;
+}
+
+.modal_close>a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: url(https://img.icons8.com/metro/26/000000/close-window.png);
+	text-indent: -9999px;
+}
+
+/*로그인 */
+.loginWrap {
+	/*background-color: #ff8040;*/
+	width: 850px;
+	height: 350px;
+}
+
+.loginInner {
+	margin-left: 17px;
+	margin-right: 17px;
+	height: 450px;
+	/*background-color: olive;*/
+	height: 350px;
+}
+
+.col_wrap {
+	/*background-color: gray;*/
+	height: 350px;
+	margin-top: 26px;
+	display: flex;
+}
+
+.col_left {
+	/*	background: yellow;*/
+	flex: 1;
+	margin-top: 20px;
+}
+
+.loginArea>form>ul>li>input {
+	color: #444;
+	border: 1px solid #d8d9db;
+	width: 350px;
+	height: 40px;
+	background: rgba(0, 0, 0, 0.0);
+	margin-bottom: 18px;
+}
+
+.idCheckbox {
+	/*background: teal;*/
+	margin-bottom: 20px;
+}
+
+.login1>button {
+	border: none;
+	background: #503396;
+	width: 350px;
+	height: 40px;
+	border-radius: 4px;
+	cursor: pointer;
+	color: white;
+}
+
+.join1 {
+	/*background: aqua;*/
+	font-size: 13px;
+	width: 350px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.join1>a{
+	color: #888;
+	text-decoration: none;
+}
+
+.col_Right {
+	background: black;
+	flex: 1;
+	margin-top: 20px;
+}
+
+/*****************************************회원가입*/
+.joinWrap {
+	width: 1280px;
+	height: 600px;
+	background: lime;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.joinInner {
+	height: 450px;
+	background: fuchsia;
+	width: 700px;
+	margin: auto;
+}
+
+.signup {
+	width: 700px;
+	margin-top: 60px;
+	text-align: left;
+	background: pink;
+	color: #0e347e;
+	font-family: 'ELAND_Choice_L';
+	font-size: 23px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.sign1 {
+	background: gray;
+	padding-top: 40px;
+	height: 100%;
+}
+
+.sign1>form>ul {
+	font-size: 16px;
+	margin-bottom: 8px;
+	background: maroon;
+}
+
+.sign1>form>input {
+	border-color: #f0f0f0;
+	border-radius: 3px;
+	width: 500px;
+	height: 30px;
+	margin-bottom: 8px;
+}
+
+.joinCheck {
+	background: teal;
+	text-align: center;
+	margin-top: 10px;
+	height: 40px;
+}
+
+.joinCheck>button {
+	background: #8080ff;
+	height: 36px;
+	border: none;
+	width: 90px;
+	border-radius: 3px;
+	color: white;
+	cursor: pointer;
+}
+
+.logout {
+	margin-top: 5px; font-size : 14px;
+	color: #888;
+	font-family: 'ELAND_Choice_L';
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	background: none;
+	font-size: 14px;
+}
+
+
+
+
+
+
+/*부트스트랩*/
+
+
+
+
+
