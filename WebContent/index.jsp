@@ -26,7 +26,7 @@
 		<%--location.href = "LoginC";--%>
 	}
 </script>
-<%--로그인 모달창 --%>
+<%--로그인 모달창 
 <script type="text/javascript">
 window.onload = function() {
 	 
@@ -43,7 +43,7 @@ window.onload = function() {
     document.querySelector('.modal_close').addEventListener('click', offClick);
  
 };
-</script>
+</script>--%>
 </head>
 <body id="page-top">
 	<!--${r }-->

@@ -64,7 +64,7 @@
     </div>
 </div>
 <!-- 키값 넣기  -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	7b34a7d1089d1d582465761a732c6a8c&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=07669008276a70614df01a01ed89a5bb&libraries=services"></script>
 <script>
 // 마커를 담을 배열입니다
 var markers = [];
